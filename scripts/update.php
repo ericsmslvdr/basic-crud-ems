@@ -4,17 +4,18 @@ class Update extends Read {
     private $lName;
     private $pwd;
     private $addr;
+    private $empID;
 
     public function __construct($empID) {
-        $results = $this->conn->query("SELECT * FROM empTbl");
+        $results = $this->conn->query("SELECT id FROM empTbl");
         foreach ($results as $data) {
             if ($data['id'] === $empID) {
-                $this->fName = $data['firstName'];
-                $this->lName = $data['lastName'];
-                $this->pwd = $data['password'];
-                $this->addr = $data['address'];
+                $this->empID = $empID;
             }
         }
+        $this->conn->query("UPDATE empTbl 
+                            SET firstName = '$this->fName', lastName = '$this->lName', password = '$this->pwd', address = '$this->addr'
+                            WHERE id = $this->empID");
     }
 
     // public function update($fName, $lName, $pwd, $addr, $empID) {
@@ -36,18 +37,17 @@ class Update extends Read {
     public function getAddr() {
         return $this->addr;
     }
+
 }
 
-if (isset($_GET['updID'])) {
-    $acc = new Update($_GET['updID']);
+$isUpdate = false;
 
-    $empID = $_GET['updID'];
-    $fName = $acc->getFname();
-    $lName = $acc->getLname();
-    $pwd = $acc->getPwd();
-    $addr = $acc->getAddr();
+if (isset($_POST['updBtn'])) {
+    $isUpdate = true;
+    $upd = new Read();
+    $upd->isUpdate($isUpdate);
 
-    $acc->update($fName, $lName, $pwd, $addr, $empID);
+    // $acc = new Update($_GET['updID']);
 
     header('location: ./index.php');
     exit();
