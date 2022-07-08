@@ -5,6 +5,7 @@ class Read extends Connection {
     private $rowPass;
     private $rowAddr;
     private $rowBtns;
+    private $data;
 
     public function read() {
         $results = $this->conn->query("SELECT * FROM empTbl");
@@ -12,18 +13,11 @@ class Read extends Connection {
             echo '<form method="POST">
                     <tr>
                         <td>' . $data['id'] . '</td>
-                        <td>' . $data['firstName'] . '</td>
-                        <td>' . $data['lastName'] . '</td>
-                        <td>' . $data['password'] . '</td>
-                        <td>' . $data['address'] . '</td>
-                        <td>
-                            <a href="./index.php?delID=' . $data['id'] . '"><button type="button" class="btn btnDel">Delete</button></a>
-                            <input type="submit" class="btn btnUpd" name="updBtn" value="Update">
-                            <input type="hidden" name="fName" value="' . $data['firstName'] . '">
-                            <input type="hidden" name="lName" value="' . $data['lastName'] . '">
-                            <input type="hidden" name="pass" value="' . $data['password'] . '">
-                            <input type="hidden" name="addr" value="' . $data['address'] . '">
-                        </td>
+                        ' . $this->rowFname . '
+                        ' . $this->rowLname . '
+                        ' . $this->rowPass . '
+                        ' . $this->rowAddr . '
+                        ' . $this->rowBtns . '
                     </tr>
                 </form>';
         }
@@ -76,17 +70,17 @@ class Read extends Connection {
                                 <input type="submit" class="btn btnUpd" name="updBtnConfirm" value="Update">
                             </td>';
         } else {
-            $this->rowFname = '<td>' . $data['firstName'] . '</td>';
-            $this->rowLname = '<td>' . $data['lastName'] . '</td>';
-            $this->rowPass = '<td>' . $data['password'] . '</td>';
-            $this->rowAddr = '<td>' . $data['address'] . '</td>';
+            $this->rowFname = '<td>' . $this->data['firstName'] . '</td>';
+            $this->rowLname = '<td>' . $this->data['lastName'] . '</td>';
+            $this->rowPass = '<td>' . $this->data['password'] . '</td>';
+            $this->rowAddr = '<td>' . $this->data['address'] . '</td>';
             $this->rowBtns = '<td>
-                                <a href="./index.php?delID=' . $data['id'] . '"><button type="button" class="btn btnDel">Delete</button></a>
+                                <a href="./index.php?delID=' . $this->data['id'] . '"><button type="button" class="btn btnDel">Delete</button></a>
                                 <input type="submit" class="btn btnUpd" name="updBtn" value="Update">
-                                <input type="hidden" name="fName" value="' . $data['firstName'] . '">
-                                <input type="hidden" name="lName" value="' . $data['lastName'] . '">
-                                <input type="hidden" name="pass" value="' . $data['password'] . '">
-                                <input type="hidden" name="addr" value="' . $data['address'] . '">
+                                <input type="hidden" name="fName" value="' . $this->data['firstName'] . '">
+                                <input type="hidden" name="lName" value="' . $this->data['lastName'] . '">
+                                <input type="hidden" name="pass" value="' . $this->data['password'] . '">
+                                <input type="hidden" name="addr" value="' . $this->data['address'] . '">
                             </td>';
         }
     }
