@@ -6,10 +6,9 @@ class Update extends Read {
     private $addr;
 
     public function __construct($empID) {
-
         $results = $this->conn->query("SELECT * FROM empTbl");
         foreach ($results as $data) {
-            if ($data['id'] === $_GET['updID']) {
+            if ($data['id'] === $empID) {
                 $this->fName = $data['firstName'];
                 $this->lName = $data['lastName'];
                 $this->pwd = $data['password'];
@@ -40,7 +39,7 @@ class Update extends Read {
 }
 
 if (isset($_GET['updID'])) {
-    // $acc = new Update();
+    $acc = new Update($_GET['updID']);
 
     $empID = $_GET['updID'];
     $fName = $acc->getFname();
@@ -48,7 +47,7 @@ if (isset($_GET['updID'])) {
     $pwd = $acc->getPwd();
     $addr = $acc->getAddr();
 
-    // $acc->update($fName, $lName, $pwd, $addr, $empID);
+    $acc->update($fName, $lName, $pwd, $addr, $empID);
 
     header('location: ./index.php');
     exit();
