@@ -1,6 +1,5 @@
 <?php
 class ReadView extends Read {
-    private $isUpdate = false;
 
     public function showEmp() {
         $records = $this->readEmp();
