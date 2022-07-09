@@ -3,23 +3,34 @@ class ReadView extends Read {
     private $isUpdate = false;
 
     public function showEmp() {
-        $datas = $this->readEmp();
-        if (!empty($datas)) {
-            foreach ($datas as $data) {
+        $records = $this->readEmp();
+        if (!empty($records)) {
+            foreach ($records as $record) {
+                if ($this->isUpdate && $record['id'] === $_POST['empID']) {
+                    $rowFname = '<td><input type="text" name="fName"></td>';
+                    $this->rowLname = '<td><input type="text" name="lName"></td>';
+                    $this->rowPass = '<td><input type="text" name="pwd"></td>';
+                    $this->rowAddr = '<td><input type="text" name="addr"></td>';
+                    $this->rowBtns = '<td>
+                                        <input type="submit" class="btn btnCan" name="canBtn" value="Cancel">
+                                        <input type="submit" class="btn btnUpd" name="updBtnConfirm" value="Update">
+                                    </td>';
+                }
                 echo '<form method="POST">
                         <tr>
-                            <td>' . $data['id'] . '</td>
-                            <td>' . $data['firstName'] . '</td>
-                            <td>' . $data['lastName'] . '</td>
-                            <td>' . $data['pNum'] . '</td>
-                            <td>' . $data['address'] . '</td>
+                            <td>' . $record['id'] . '</td>
+                            <td>' . $record['firstName'] . '</td>
+                            <td>' . $record['lastName'] . '</td>
+                            <td>' . $record['pNum'] . '</td>
+                            <td>' . $record['address'] . '</td>
                             <td>
-                                <a href="./index.php?delID=' . $data['id'] . '"><button type="button" class="btn btnDel">Delete</button></a>
+                                <a href="./index.php?delID=' . $record['id'] . '"><button type="button" class="btn btnDel">Delete</button></a>
                                 <input type="submit" class="btn btnUpd" name="updBtn" value="Update">
-                                <input type="hidden" name="fName" value="' . $data['firstName'] . '">
-                                <input type="hidden" name="lName" value="' . $data['lastName'] . '">
-                                <input type="hidden" name="pNum" value="' . $data['pNum'] . '">
-                                <input type="hidden" name="addr" value="' . $data['address'] . '">
+                                <input type="hidden" name="empID" value="' . $record['id'] . '">
+                                <input type="hidden" name="fName" value="' . $record['firstName'] . '">
+                                <input type="hidden" name="lName" value="' . $record['lastName'] . '">
+                                <input type="hidden" name="pNum" value="' . $record['pNum'] . '">
+                                <input type="hidden" name="addr" value="' . $record['address'] . '">
                             </td>
                         </tr>
                     </form>';

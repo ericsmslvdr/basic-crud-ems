@@ -5,12 +5,12 @@ class Read extends DatabaseConn {
         $results = $this->connect()->query($sql);
         if ($results->num_rows > 0) {
             while ($row = $results->fetch_assoc()) {
-                $data[] = $row;
+                $record[] = $row;
             }
         } else {
-            $data = null;
+            $record = null;
         }
-        return $data;
+        return $record;
     }
 
     public function isUpdate($isUpdate) {

@@ -30,18 +30,5 @@ class Update extends Read {
     public function getAddr() {
         return $this->addr;
     }
-
 }
 
-$isUpdate = false;
-
-if (isset($_POST['updBtn'])) {
-    $isUpdate = true;
-    $upd = new Read();
-    $upd->isUpdate($isUpdate);
-
-    // $acc = new Update($_GET['updID']);
-
-    header('location: ./index.php');
-    exit();
-}
