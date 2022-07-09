@@ -7,7 +7,7 @@ class Update extends Read {
     private $empID;
 
     public function __construct($empID) {
-        $results = $this->conn->query("SELECT id FROM empTbl");
+        $results = $this->connect()->query("SELECT id FROM empTbl");
         foreach ($results as $data) {
             if ($data['id'] === $empID) {
                 $this->empID = $empID;

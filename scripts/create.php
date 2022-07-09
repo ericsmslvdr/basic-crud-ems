@@ -1,11 +1,9 @@
 <?php
 
-class Create extends Connection {
+class Create extends DatabaseConn {
     public function create($fName, $lName, $pwd, $addr) {
-        $result = $this->conn->query("INSERT INTO empTbl (firstName, lastName, password, address)
+        $result = $this->connect()->query("INSERT INTO empTbl (firstName, lastName, password, address)
                                     VALUES ('$fName', '$lName', '$pwd', '$addr')");
-
-        $this->conn->close();
     }
 }
 

@@ -1,6 +1,7 @@
 <?php
-include('./config/conn.php');
+include('./scripts/database.php');
 include('./scripts/read.php');
+include('./scripts/readView.php');
 include('./scripts/create.php');
 include('./scripts/delete.php');
 include('./scripts/update.php');
@@ -57,8 +58,8 @@ include('./scripts/update.php');
                 </thead>
                 <tbody>
                     <?php
-                    $acc = new Read();
-                    echo $acc->read();
+                    $acc = new ReadView();
+                    echo $acc->showEmp();
                     ?>
                 </tbody>
             </table>

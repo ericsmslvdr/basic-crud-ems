@@ -1,40 +1,47 @@
 <?php
-class Read extends Connection {
+class Read extends DatabaseConn {
     private $isUpdate = false;
 
-    public function read() {
-        $results = $this->conn->query("SELECT * FROM empTbl");
-        foreach ($results as $data) {
-            echo '<form method="POST">
-                    <tr>
-                        <td>' . $data['id'] . '</td>
-                        <td>';
-                        echo $this->isUpdate ? '<input type="text" name="fName" value="'. $data["firstName"]. '">' : $data['firstName'];
-                        echo '</td>
-                        <td>' . $data['lastName'] . '</td>
-                        <td>' . $data['password'] . '</td>
-                        <td>' . $data['address'] . '</td>
-                        <td>
-                            <a href="./index.php?delID=' . $data['id'] . '"><button type="button" class="btn btnDel">Delete</button></a>
-                            <input type="submit" class="btn btnUpd" name="updBtn" value="Update">
-                            <input type="hidden" name="fName" value="' . $data['firstName'] . '">
-                            <input type="hidden" name="lName" value="' . $data['lastName'] . '">
-                            <input type="hidden" name="pass" value="' . $data['password'] . '">
-                            <input type="hidden" name="addr" value="' . $data['address'] . '">
-                        </td>
-                    </tr>
-                </form>';
+    public function readEmp() {
+        $sql = "SELECT * FROM empTbl";
+        $results = $this->connect()->query($sql);
+        if ($results->num_rows > 0) {
+            while ($row = $results->fetch_assoc()) {
+                $data[] = $row; 
+            }
         }
-        if ($results->num_rows === 0) {
-            echo '<tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>';
-        }
+        return $data;
+        // foreach ($results as $data) {
+        //     echo '<form method="POST">
+        //             <tr>
+        //                 <td>' . $data['id'] . '</td>
+        //                 <td>';
+        //                 echo $this->isUpdate ? '<input type="text" name="fName" value="'. $data["firstName"]. '">' : $data['firstName'];
+        //                 echo '</td>
+        //                 <td>' . $data['lastName'] . '</td>
+        //                 <td>' . $data['password'] . '</td>
+        //                 <td>' . $data['address'] . '</td>
+        //                 <td>
+        //                     <a href="./index.php?delID=' . $data['id'] . '"><button type="button" class="btn btnDel">Delete</button></a>
+        //                     <input type="submit" class="btn btnUpd" name="updBtn" value="Update">
+        //                     <input type="hidden" name="fName" value="' . $data['firstName'] . '">
+        //                     <input type="hidden" name="lName" value="' . $data['lastName'] . '">
+        //                     <input type="hidden" name="pass" value="' . $data['password'] . '">
+        //                     <input type="hidden" name="addr" value="' . $data['address'] . '">
+        //                 </td>
+        //             </tr>
+        //         </form>';
+        // }
+        // if ($results->num_rows === 0) {
+        //     echo '<tr>
+        //             <td>&nbsp;</td>
+        //             <td>&nbsp;</td>
+        //             <td>&nbsp;</td>
+        //             <td>&nbsp;</td>
+        //             <td>&nbsp;</td>
+        //             <td>&nbsp;</td>
+        //         </tr>';
+        // }
 
         // if ($result->num_rows > 0) {
         //     while ($row = $result->fetch_assoc()) {

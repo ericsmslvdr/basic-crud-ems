@@ -1,11 +1,9 @@
 <?php
 
-class Delete extends Connection {
+class Delete extends DatabaseConn {
     public function delete($deleteID) {
-        $result = $this->conn->query("DELETE FROM empTbl
+        $result = $this->connect()->query("DELETE FROM empTbl
                                     WHERE id = '$deleteID'");
-                                
-        $this->conn->close();
     }
 }
 
