@@ -1,28 +1,12 @@
 <?php
-include('./scripts/database.php');
-include('./scripts/read.php');
-include('./scripts/readView.php');
-include('./scripts/create.php');
-include('./scripts/delete.php');
-include('./scripts/update.php');
+include('./controller/indexCtrl.php')
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/style.css">
-    <title>Practice OOP PHP</title>
-</head>
-
-<body>
+<?php include('./view/header.php') ?>
     <div class="container">
         <div class="formCard">
             <form action="" method="POST">
-                <h1>Create Account</h1>
+                <h1>Add Employee</h1>
                 <br>
                 <label for="">First Name:</label>
                 <br>
@@ -32,15 +16,15 @@ include('./scripts/update.php');
                 <br>
                 <input type="text" name="lName" class="textField">
                 <br>
-                <label for="">Password:</label>
+                <label for="">Phone Number:</label>
                 <br>
-                <input type="text" name="pwd" class="textField">
+                <input type="text" name="pNum" class="textField">
                 <br>
                 <label for="">Address:</label>
                 <br>
                 <input type="text" name="addr" class="textField">
                 <br>
-                <input type="submit" name="create" value="Create" class="btn">
+                <input type="submit" name="add" value="Add" class="btn">
             </form>
         </div>
 

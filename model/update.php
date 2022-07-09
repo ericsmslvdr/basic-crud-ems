@@ -2,7 +2,7 @@
 class Update extends Read {
     private $fName;
     private $lName;
-    private $pwd;
+    private $pNum;
     private $addr;
     private $empID;
 
@@ -13,17 +13,10 @@ class Update extends Read {
                 $this->empID = $empID;
             }
         }
-        $this->conn->query("UPDATE empTbl 
-                            SET firstName = '$this->fName', lastName = '$this->lName', password = '$this->pwd', address = '$this->addr'
+        $this->connect()->query("UPDATE empTbl 
+                            SET firstName = '$this->fName', lastName = '$this->lName', pNum = '$this->pNum', address = '$this->addr'
                             WHERE id = $this->empID");
     }
-
-    // public function update($fName, $lName, $pwd, $addr, $empID) {
-    //     $this->conn->query("UPDATE empTbl 
-    //                         SET firstName = '$fName', lastName = '$lName', password = '$pwd', address = '$addr'
-    //                         WHERE id = $empID");
-    //     $this->conn->close();
-    // }
 
     public function getFname() {
         return $this->fName;
@@ -31,8 +24,8 @@ class Update extends Read {
     public function getLname() {
         return $this->lName;
     }
-    public function getPwd() {
-        return $this->pwd;
+    public function getPnum() {
+        return $this->pNum;
     }
     public function getAddr() {
         return $this->addr;
