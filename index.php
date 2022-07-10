@@ -1,8 +1,11 @@
 <?php
-include('./controller/indexCtrl.php')
+include('./scripts/database.php');
+include('./scripts/create.php');
+include('./scripts/read.php');
+include('./scripts/delete.php');
 ?>
 
-<?php include('./view/header.php') ?>
+<?php include('./includes/header.php') ?>
 <div class="container">
 
     <div class="formCard">
