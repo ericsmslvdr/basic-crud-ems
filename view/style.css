@@ -57,23 +57,18 @@
     margin: auto 0;
 }
 
-.accTbl {
-    width: 100%;
-    border-radius: 10px;
-
-}
-
 table,
 th,
 td {
     border: 1px solid #000000;
     border-collapse: collapse;
     background-color: #eeeeee;
+    text-align: center;
 }
 
 th,
 td {
-    padding: 15px;
+    padding: 10px;
 }
 
 th {
@@ -86,6 +81,12 @@ th {
 
 .btnUpd:hover {
     background-color: #0daf0d;
+}
+
+.tfTbl {
+    margin: 0;
+    font-size: medium;
+    width: 50%;
 }
 
 /* END ACCOUNT TABLE */

@@ -3,7 +3,8 @@ $upd = new ReadView();
 
 if (isset($_POST['updBtn'])) {
     $toUpdate = true;
-    $upd->isUpdate($toUpdate);
+    $empID = $_POST['empID'];
+    $upd->isUpdate($toUpdate, $empID);
 
     // header('location: ./index.php');
     // exit();
