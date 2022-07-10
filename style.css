@@ -6,10 +6,16 @@
 .header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     padding: 15px;
     background-color: #5e5e5e;
     color: #eeeeee;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    background-color: #5e5e5e;
+    padding: 2px;
 }
 
 .container {
