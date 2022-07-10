@@ -6,9 +6,9 @@ include('./controller/createCtrl.php');
 
 
 include('./model/read.php');
+include('./controller/updateCtrl.php');
 include('./view/readView.php');
 
-include('./controller/updateCtrl.php');
 
 include('./model/delete.php');
 include('./controller/deleteCtrl.php');

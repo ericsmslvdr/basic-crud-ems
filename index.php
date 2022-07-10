@@ -4,6 +4,7 @@ include('./controller/indexCtrl.php')
 
 <?php include('./view/header.php') ?>
 <div class="container">
+
     <div class="formCard">
         <form action="" method="POST">
             <h1>Add Employee</h1>
@@ -29,15 +30,15 @@ include('./controller/indexCtrl.php')
     </div>
 
     <div class="accountCard">
-        <table>
+        <table width="100%">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Password</th>
-                    <th>Address</th>
-                    <th>Action</th>
+                    <th width="5%">ID</th>
+                    <th width="15%">First Name</th>
+                    <th width="15%">Last Name</th>
+                    <th width="15%">Password</th>
+                    <th width="15%">Address</th>
+                    <th width="15%">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -48,6 +49,7 @@ include('./controller/indexCtrl.php')
             </tbody>
         </table>
     </div>
+
 </div>
 </body>
 

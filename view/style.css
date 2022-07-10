@@ -55,6 +55,7 @@
 /* ACCOUNT TABLE */
 .accountCard {
     margin: auto 0;
+    width: 70%;
 }
 
 table,

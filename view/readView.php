@@ -5,7 +5,7 @@ class ReadView extends Read {
         $records = $this->readEmp();
         if (!empty($records)) {
             foreach ($records as $record) {
-                if ($this->isUpdate && $record['id'] == $_POST['empID']) {
+                if ($this->isUpdate && $record['id'] == $this->empID) {
                     $rowFname = '<input type="text" name="fNameUpd" value="' . $record['firstName'] . '" class="textField tfTbl">';
                     $rowLname = '<input type="text" name="lNameUpd" value="' . $record['lastName'] . '" class="textField tfTbl">';
                     $rowPnum = '<input type="text" name="pNumUpd" value="' . $record['pNum'] . '" class="textField tfTbl">';
@@ -28,12 +28,12 @@ class ReadView extends Read {
                             <td>' . $rowPnum . '</td>
                             <td>' . $rowAddr . '</td>
                             <td>
-                            ' . $rowBtns . '
-                            <input type="hidden" name="empID" value="' . $record['id'] . '">
-                            <input type="hidden" name="fName" value="' . $record['firstName'] . '">
-                            <input type="hidden" name="lName" value="' . $record['lastName'] . '">
-                            <input type="hidden" name="pass" value="' . $record['pNum'] . '">
-                            <input type="hidden" name="addr" value="' . $record['address'] . '">
+                                ' . $rowBtns . '
+                                <input type="hidden" name="empID" value="' . $record['id'] . '">
+                                <input type="hidden" name="fName" value="' . $record['firstName'] . '">
+                                <input type="hidden" name="lName" value="' . $record['lastName'] . '">
+                                <input type="hidden" name="pass" value="' . $record['pNum'] . '">
+                                <input type="hidden" name="addr" value="' . $record['address'] . '">
                             </td>
                         </tr>
                     </form>';

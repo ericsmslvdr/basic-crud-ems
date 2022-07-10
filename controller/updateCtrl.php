@@ -1,5 +1,5 @@
 <?php
-$upd = new ReadView();
+$upd = new Read();
 
 if (isset($_POST['updBtn'])) {
     $toUpdate = true;
