@@ -1,7 +1,6 @@
 <?php
 
 class Read extends DatabaseConn {
-    private $isUpdate = false;
 
     public function readEmp() {
         $sql = "SELECT * FROM empTbl";
@@ -17,16 +16,18 @@ class Read extends DatabaseConn {
     }
 
     public function showEmp() {
+        $isUpdate = false;
         $records = $this->readEmp();
-        $empID = $this->isUpdate ? $_GET['updID'] : null;
         if (!empty($records)) {
+            $isUpdate = true;
+            $this->getEmpID();
             foreach ($records as $record) {
-                if ($empID == $record['id']) {
+                if ($isUpdate && $this->getEmpID() == $record['id']) {
                     $rowFname = '<input type="text" name="fNameUpd" value="' . $record['firstName'] . '" class="textField tfTbl">';
                     $rowLname = '<input type="text" name="lNameUpd" value="' . $record['lastName'] . '" class="textField tfTbl">';
                     $rowPnum = '<input type="text" name="pNumUpd" value="' . $record['pNum'] . '" class="textField tfTbl">';
                     $rowAddr = '<input type="text" name="addrUpd" value="' . $record['address'] . '" class="textField tfTbl">';
-                    $rowBtns = '<a href="./index.php"><button type="button" class="btn btnCan">Cancel</button></a>
+                    $rowBtns = '<a href="./index.php#accountTbl"><button type="button" class="btn btnCan">Cancel</button></a>
                                 <input type="submit" class="btn btnUpd" name="updBtnConfirm" value="Update">';
                 } else {
                     $rowFname = $record['firstName'];
@@ -61,14 +62,19 @@ class Read extends DatabaseConn {
         }
     }
 
-    public function setValues($true) {
-        $this->isUpdate = $true;
+    public function getEmpID() {
+        if (isset($_GET['updID'])) {
+            $empID = $_GET['updID'];
+        } else {
+            $empID = 0;
+        }
+        return $empID;
     }
 }
 
-$upd = new Read();
+// $upd = new Read();
 
-if (isset($_GET['updID'])) {
-    $isUpdate = true;
-    $upd->setValues($isUpdate);
-}
+// if (isset($_GET['updID'])) {
+//     $empID = $_GET['empID'];
+//     $upd->showEmp();
+// }
