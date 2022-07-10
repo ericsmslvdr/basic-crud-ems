@@ -1,4 +1,4 @@
-<div class="accountCard">
+<div class="accountTbl">
     <table width="100%">
         <thead>
             <tr>

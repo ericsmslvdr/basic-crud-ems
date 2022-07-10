@@ -15,6 +15,7 @@
     display: flex;
     justify-content: center;
     background-color: #5e5e5e;
+    color: #eeeeee;
     padding: 2px;
 }
 
@@ -59,7 +60,7 @@
 /* END FORM */
 
 /* ACCOUNT TABLE */
-.accountCard {
+.accountTbl {
     margin: auto 0;
     width: 70%;
 }
