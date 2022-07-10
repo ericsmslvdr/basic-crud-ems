@@ -71,10 +71,3 @@ class Read extends DatabaseConn {
         return $empID;
     }
 }
-
-// $upd = new Read();
-
-// if (isset($_GET['updID'])) {
-//     $empID = $_GET['empID'];
-//     $upd->showEmp();
-// }
