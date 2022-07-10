@@ -1,6 +1,6 @@
 <?php
 class Read extends DatabaseConn {
-    public $isUpdate = false;
+    public $isUpdate = true;
 
     public function readEmp() {
         $sql = "SELECT * FROM empTbl";
@@ -14,7 +14,7 @@ class Read extends DatabaseConn {
         }
         return $record;
     }
-
+    
     public function isUpdate($tmpBool) {
         $this->isUpdate = $tmpBool;
     }

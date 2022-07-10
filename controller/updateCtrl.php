@@ -1,11 +1,10 @@
 <?php
-$upd = new Read();
+$upd = new ReadView();
 
 if (isset($_POST['updBtn'])) {
-    $isUpdate = true;
-    $changeRow = $upd->isUpdate($isUpdate);
-    var_dump($changeRow);
+    $toUpdate = true;
+    $upd->isUpdate($toUpdate);
 
-    header('location: ./index.php');
-    exit();
+    // header('location: ./index.php');
+    // exit();
 }
