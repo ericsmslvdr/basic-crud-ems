@@ -1,4 +1,4 @@
-<div class="accountTbl">
+<div class="accountTbl" id="accountTbl">
     <table width="100%">
         <thead>
             <tr>
@@ -12,7 +12,7 @@
         </thead>
         <tbody>
             <?php
-            $acc = new ReadView();
+            $acc = new Read();
             echo $acc->showEmp();
             ?>
         </tbody>

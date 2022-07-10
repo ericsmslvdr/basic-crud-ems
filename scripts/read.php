@@ -1,5 +1,7 @@
 <?php
+
 class Read extends DatabaseConn {
+    private $isUpdate = false;
 
     public function readEmp() {
         $sql = "SELECT * FROM empTbl";
@@ -13,10 +15,6 @@ class Read extends DatabaseConn {
         }
         return $record;
     }
-}
-
-class ReadView extends Read {
-    public $isUpdate = false;
 
     public function showEmp() {
         $records = $this->readEmp();
@@ -35,8 +33,8 @@ class ReadView extends Read {
                     $rowLname = $record['lastName'];
                     $rowPnum = $record['pNum'];
                     $rowAddr = $record['address'];
-                    $rowBtns = '<a href="./index.php?delID=' . $record['id'] . '"><button type="button" class="btn btnDel">Delete</button></a>
-                                <a href="./index.php?updID=' . $record['id'] . '"><button type="button" class="btn btnUpd">Update</button></a>';
+                    $rowBtns = '<a href="./index.php?delID=' . $record['id'] . '#accountTbl"><button type="button" class="btn btnDel">Delete</button></a>
+                                <a href="./index.php?updID=' . $record['id'] . '#accountTbl"><button type="button" class="btn btnUpd">Update</button></a>';
                 }
                 echo '<form method="POST">
                         <tr>
@@ -68,7 +66,7 @@ class ReadView extends Read {
     }
 }
 
-$upd = new ReadView();
+$upd = new Read();
 
 if (isset($_GET['updID'])) {
     $isUpdate = true;
