@@ -1,6 +1,6 @@
 <?php
 class Read extends DatabaseConn {
-    public $isUpdate = true;
+    public $isUpdate;
     public $empID;
 
     public function readEmp() {
@@ -16,8 +16,8 @@ class Read extends DatabaseConn {
         return $record;
     }
 
-    public function isUpdate($tmpBool, $empID) {
-        $this->isUpdate = $tmpBool;
+    public function setValues($toUpdate, $empID) {
+        $this->isUpdate = $toUpdate;
         $this->empID = $empID;
     }
 }
