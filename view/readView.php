@@ -1,11 +1,13 @@
 <?php
 class ReadView extends Read {
+    private $toUpdate;
+    private $empID;
 
     public function showEmp() {
         $records = $this->readEmp();
         if (!empty($records)) {
             foreach ($records as $record) {
-                if ($this->isUpdate && $record['id'] == $this->empID) {
+                if ($this->toUpdate && $this->empID == $record['id']) {
                     $rowFname = '<input type="text" name="fNameUpd" value="' . $record['firstName'] . '" class="textField tfTbl">';
                     $rowLname = '<input type="text" name="lNameUpd" value="' . $record['lastName'] . '" class="textField tfTbl">';
                     $rowPnum = '<input type="text" name="pNumUpd" value="' . $record['pNum'] . '" class="textField tfTbl">';
@@ -34,19 +36,42 @@ class ReadView extends Read {
                                 <input type="hidden" name="lName" value="' . $record['lastName'] . '">
                                 <input type="hidden" name="pass" value="' . $record['pNum'] . '">
                                 <input type="hidden" name="addr" value="' . $record['address'] . '">
+                                ' . $this->getEmpID()  . $this->getIsTrue() . '
                             </td>
                         </tr>
                     </form>';
             }
         } else {
             echo '<tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
+                    <td colspan="6">No Records Found!</td>
                 </tr>';
         }
     }
+
+    public function setValues($toUpdate, $empID) {
+        $this->$toUpdate = $toUpdate;
+        $this->$empID = $empID;
+    }
+
+    public function getEmpID() {
+        return $this->empID;
+    }
+
+    public function getIsTrue() {
+        return $this->toUpdate;
+    }
+}
+
+$upd = new ReadView();
+
+if (isset($_POST['updBtn'])) {
+    $toUpdate = true;
+    $empID = $_POST['empID'];
+    $testing = $upd->setValues(true, 62);
+
+    if ($testing) {
+        echo 'NAYSNAYS...';
+    }
+    // header('location: ./index.php');
+    // exit();
 }

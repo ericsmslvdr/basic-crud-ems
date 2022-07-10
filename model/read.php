@@ -1,7 +1,5 @@
 <?php
 class Read extends DatabaseConn {
-    public $isUpdate;
-    public $empID;
 
     public function readEmp() {
         $sql = "SELECT * FROM empTbl";
@@ -14,10 +12,5 @@ class Read extends DatabaseConn {
             $record = null;
         }
         return $record;
-    }
-
-    public function setValues($toUpdate, $empID) {
-        $this->isUpdate = $toUpdate;
-        $this->empID = $empID;
     }
 }
