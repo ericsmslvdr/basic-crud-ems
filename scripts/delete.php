@@ -6,6 +6,11 @@ class Delete extends DatabaseConn {
                 WHERE id = '$deleteID'";
         $result = $this->connect()->query($sql);
     }
+
+    // public function FunctionName(Type $var = null)
+    // {
+    //     # code...
+    // }
 }
 
 $acc = new Delete();

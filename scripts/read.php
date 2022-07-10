@@ -18,11 +18,12 @@ class Read extends DatabaseConn {
     public function showEmp() {
         $isUpdate = false;
         $records = $this->readEmp();
+        $empID = $this->getEmpID();
         if (!empty($records)) {
             $isUpdate = true;
-            $this->getEmpID();
+            // $this->getEmpID();
             foreach ($records as $record) {
-                if ($isUpdate && $this->getEmpID() == $record['id']) {
+                if ($isUpdate && $empID === $record['id']) {
                     $rowFname = '<input type="text" name="fNameUpd" value="' . $record['firstName'] . '" class="textField tfTbl">';
                     $rowLname = '<input type="text" name="lNameUpd" value="' . $record['lastName'] . '" class="textField tfTbl">';
                     $rowPnum = '<input type="text" name="pNumUpd" value="' . $record['pNum'] . '" class="textField tfTbl">';
