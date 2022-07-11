@@ -1,18 +1,14 @@
 <?php
 
 class DatabaseConn {
-    private $dbHost;
-    private $dbUser;
-    private $dbPass;
-    private $dbName;
 
     public function connect() {
-        $this->dbHost = 'localhost';
-        $this->dbUser = 'root';
-        $this->dbPass = '';
-        $this->dbName = 'pracoop';
+        $dbHost = 'localhost';
+        $dbUser = 'root';
+        $dbPass = '';
+        $dbName = 'pracoop';
 
-        $conn = new mysqli($this->dbHost, $this->dbUser, $this->dbPass, $this->dbName);
+        $conn = new mysqli($dbHost, $dbUser, $dbPass, $dbName);
 
         return $conn;
     }

@@ -1,13 +1,13 @@
-<div class="accountTbl" id="accountTbl">
-    <table width="100%">
+<div class="col-9" id="accountTbl">
+    <table class="table table-striped" style="table-layout: fixed;">
         <thead>
             <tr>
                 <th width="5%">ID</th>
-                <th width="15%">First Name</th>
-                <th width="15%">Last Name</th>
-                <th width="15%">Password</th>
-                <th width="15%">Address</th>
-                <th width="15%">Action</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Password</th>
+                <th>Address</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>

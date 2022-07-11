@@ -2,7 +2,7 @@
 
 class Create extends DatabaseConn {
 
-    public function create($fName, $lName, $pNum, $addr) {
+    public function __construct($fName, $lName, $pNum, $addr) {
         $sql = "INSERT INTO empTbl (firstName, lastName, pNum, address)
                 VALUES ('$fName', '$lName', '$pNum', '$addr')";
         $results = $this->connect()->query($sql);
@@ -12,13 +12,13 @@ class Create extends DatabaseConn {
     }
 }
 
-$acc = new Create();
-
-if (isset($_POST['add'])) {
+if (isset($_POST['addBtn'])) {
     $fName = $_POST['fName'];
     $lName = $_POST['lName'];
     $pNum = $_POST['pNum'];
     $addr = $_POST['addr'];
 
-    $acc->create($fName, $lName, $pNum, $addr);
+    new Create($fName, $lName, $pNum, $addr);
+    header('location: ./index.php');
+    exit();
 }

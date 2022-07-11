@@ -21,19 +21,19 @@ class Read extends DatabaseConn {
         if (!empty($records)) {
             foreach ($records as $record) {
                 if ($empID === $record['id']) {
-                    $rowFname = '<input type="text" name="fNameUpd" value="' . $record['firstName'] . '" class="textField tfTbl">';
-                    $rowLname = '<input type="text" name="lNameUpd" value="' . $record['lastName'] . '" class="textField tfTbl">';
-                    $rowPnum = '<input type="text" name="pNumUpd" value="' . $record['pNum'] . '" class="textField tfTbl">';
-                    $rowAddr = '<input type="text" name="addrUpd" value="' . $record['address'] . '" class="textField tfTbl">';
-                    $rowBtns = '<input type="submit" class="btn btnCan" name="cancelBtn" value="Cancel">
-                                <input type="submit" class="btn btnUpd" name="confirmBtn" value="Confirm">';
+                    $rowFname = '<input type="text" name="fNameUpd" value="' . $record['firstName'] . '" class="form-control form-control-sm">';
+                    $rowLname = '<input type="text" name="lNameUpd" value="' . $record['lastName'] . '" class="form-control form-control-sm">';
+                    $rowPnum = '<input type="text" name="pNumUpd" value="' . $record['pNum'] . '" class="form-control form-control-sm">';
+                    $rowAddr = '<input type="text" name="addrUpd" value="' . $record['address'] . '" class="form-control form-control-sm">';
+                    $rowBtns = '<input type="submit" class="btn btn-secondary btn-sm" name="cancelBtn" value="Cancel">
+                                <input type="submit" class="btn btn-success btn-sm" name="confirmBtn" value="Confirm">';
                 } else {
                     $rowFname = $record['firstName'];
                     $rowLname = $record['lastName'];
                     $rowPnum = $record['pNum'];
                     $rowAddr = $record['address'];
-                    $rowBtns = '<input type="submit" class="btn btnDel" name="delBtn" value="Delete">
-                                <input type="submit" class="btn btnUpd" name="updBtn" value="Update">';
+                    $rowBtns = '<input type="submit" class="btn btn-danger btn-sm" name="delBtn" value="Delete">
+                                <input type="submit" class="btn btn-info btn-sm" name="updBtn" value="Update">';
                 }
                 echo '<form method="POST" action="./index.php#accountTBl">
                         <tr>
@@ -58,7 +58,7 @@ class Read extends DatabaseConn {
         if (isset($_POST['updBtn'])) {
             $empID = $_POST['empID'];
         } else if (isset($_POST['cancelBtn'])) {
-            $empID = 0;
+            $empID;
         }
         return $empID;
     }
