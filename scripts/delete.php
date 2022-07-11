@@ -11,7 +11,6 @@ class Delete extends DatabaseConn {
     }
 }
 
-
 if (isset($_POST['delBtn'])) {
     $empID = $_POST['empID'];
     new Delete($empID);
