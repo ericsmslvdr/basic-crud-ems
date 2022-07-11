@@ -20,9 +20,8 @@ include('./scripts/delete.php');
 <body>
     
     <?php include('./components/header.php') ?>
-
     <div class="container">
-        <div class="row align-items-center">
+        <div class="row">
             <?php include('./components/form.php') ?>
             <?php include('./components/table.php') ?>
         </div>
