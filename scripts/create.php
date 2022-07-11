@@ -6,6 +6,9 @@ class Create extends DatabaseConn {
         $sql = "INSERT INTO empTbl (firstName, lastName, pNum, address)
                 VALUES ('$fName', '$lName', '$pNum', '$addr')";
         $results = $this->connect()->query($sql);
+        if ($results) {
+            $this->connect()->close();
+        }
     }
 }
 

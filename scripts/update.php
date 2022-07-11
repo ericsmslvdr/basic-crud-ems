@@ -1,34 +1,25 @@
 <?php
-class Update extends Read {
-    private $fName;
-    private $lName;
-    private $pNum;
-    private $addr;
-    private $empID;
+class Update extends DatabaseConn {
 
-    public function __construct($empID) {
-        $records = $this->readEmp();
-        foreach ($records as $record) {
-            if ($record['id'] === $empID) {
-                $this->empID = $empID;
-            }
+    public function __construct($empID, $fName, $lName, $pNum, $addr) {
+        $sql = "UPDATE empTbl 
+                SET firstName = '$fName', lastName = '$lName', pNum = '$pNum', address = '$addr'
+                WHERE id = $empID";
+        $result = $this->connect()->query($sql);
+        if ($result) {
+            $this->connect()->close();
         }
-        $this->connect()->query("UPDATE empTbl 
-                            SET firstName = '$this->fName', lastName = '$this->lName', pNum = '$this->pNum', address = '$this->addr'
-                            WHERE id = $this->empID");
-    }
-
-    public function getFname() {
-        return $this->fName;
-    }
-    public function getLname() {
-        return $this->lName;
-    }
-    public function getPnum() {
-        return $this->pNum;
-    }
-    public function getAddr() {
-        return $this->addr;
     }
 }
 
+
+if (isset($_POST['confirmBtn'])) {
+    $empID = $_POST['empID'];
+    $fName = $_POST['fNameUpd'];
+    $lName = $_POST['lNameUpd'];
+    $pNum = $_POST['pNumUpd'];
+    $addr = $_POST['addrUpd'];
+
+    $upd = new Update($empID, $fName, $lName, $pNum, $addr);
+    
+}

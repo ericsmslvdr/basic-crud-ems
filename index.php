@@ -2,6 +2,7 @@
 include('./scripts/database.php');
 include('./scripts/create.php');
 include('./scripts/read.php');
+include('./scripts/update.php');
 include('./scripts/delete.php');
 ?>
 
