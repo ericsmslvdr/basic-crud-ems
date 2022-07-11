@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 08, 2022 at 02:40 PM
+-- Generation Time: Jul 11, 2022 at 04:47 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -31,7 +31,7 @@ CREATE TABLE `empTbl` (
   `id` int(10) UNSIGNED NOT NULL,
   `firstName` varchar(20) NOT NULL,
   `lastName` varchar(20) NOT NULL,
-  `password` varchar(20) NOT NULL,
+  `pNum` varchar(20) NOT NULL,
   `address` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -39,11 +39,12 @@ CREATE TABLE `empTbl` (
 -- Dumping data for table `empTbl`
 --
 
-INSERT INTO `empTbl` (`id`, `firstName`, `lastName`, `password`, `address`) VALUES
-(1, 'John', 'Doe', 'qwerty123', 'Malolos'),
-(2, 'Jose', 'Rizal', 'poiuytr', 'Calamba'),
-(3, 'Juan', 'Cruz', 'zxczxc', 'Plaridel'),
-(4, 'First Name', 'Last Name', 'password', 'address');
+INSERT INTO `empTbl` (`id`, `firstName`, `lastName`, `pNum`, `address`) VALUES
+(1, 'James', 'Walker', '806-448-3095', 'Florida'),
+(2, 'Tim', 'Arnold', '409-634-9863', 'Texas'),
+(3, 'Nicolas', 'Gibson', '845-653-7985', 'New York'),
+(4, 'Christian', 'Alsop', '940-616-4019', 'California'),
+(5, 'Frank', 'Burgess', '218-248-4130', 'Minnesota');
 
 --
 -- Indexes for dumped tables
@@ -63,7 +64,7 @@ ALTER TABLE `empTbl`
 -- AUTO_INCREMENT for table `empTbl`
 --
 ALTER TABLE `empTbl`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

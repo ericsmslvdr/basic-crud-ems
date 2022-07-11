@@ -48,7 +48,7 @@ class Read extends DatabaseConn {
             }
         } else {
             echo '<tr>
-                    <td colspan="6">No Records Found!</td>
+                    <td colspan="6" class="text-center">No Records Found!</td>
                 </tr>';
         }
     }
