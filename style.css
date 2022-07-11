@@ -11,14 +11,6 @@
     color: #eeeeee;
 }
 
-.footer {
-    display: flex;
-    justify-content: center;
-    background-color: #5e5e5e;
-    color: #eeeeee;
-    padding: 2px;
-}
-
 .container {
     background-color: #b1b1b1;
     height: 100vh;

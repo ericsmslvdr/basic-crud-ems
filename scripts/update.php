@@ -20,6 +20,5 @@ if (isset($_POST['confirmBtn'])) {
     $pNum = $_POST['pNumUpd'];
     $addr = $_POST['addrUpd'];
 
-    $upd = new Update($empID, $fName, $lName, $pNum, $addr);
-    
+    new Update($empID, $fName, $lName, $pNum, $addr);
 }

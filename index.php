@@ -25,7 +25,6 @@ include('./scripts/delete.php');
         <?php include('./components/table.php') ?>
     </div>
 
-    <?php include('./components/footer.php') ?>
 </body>
 
 </html>

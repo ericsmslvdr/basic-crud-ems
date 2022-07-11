@@ -9,15 +9,10 @@ class Delete extends DatabaseConn {
             $this->connect()->close();
         }
     }
-
-    // public function FunctionName(Type $var = null)
-    // {
-    //     # code...
-    // }
 }
 
 
-if (isset($_GET['delID'])) {
-    $empID = $_GET['delID'];
-    $acc = new Delete($empID);
+if (isset($_POST['delBtn'])) {
+    $empID = $_POST['empID'];
+    new Delete($empID);
 }

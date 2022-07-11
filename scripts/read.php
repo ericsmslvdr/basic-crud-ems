@@ -25,14 +25,14 @@ class Read extends DatabaseConn {
                     $rowLname = '<input type="text" name="lNameUpd" value="' . $record['lastName'] . '" class="textField tfTbl">';
                     $rowPnum = '<input type="text" name="pNumUpd" value="' . $record['pNum'] . '" class="textField tfTbl">';
                     $rowAddr = '<input type="text" name="addrUpd" value="' . $record['address'] . '" class="textField tfTbl">';
-                    $rowBtns = '<input type="submit" class="btn btnCan" name="cancelUpd" value="Cancel">
+                    $rowBtns = '<input type="submit" class="btn btnCan" name="cancelBtn" value="Cancel">
                                 <input type="submit" class="btn btnUpd" name="confirmBtn" value="Confirm">';
                 } else {
                     $rowFname = $record['firstName'];
                     $rowLname = $record['lastName'];
                     $rowPnum = $record['pNum'];
                     $rowAddr = $record['address'];
-                    $rowBtns = '<a href="./index.php?delID=' . $record['id'] . '#accountTbl"><button type="button" class="btn btnDel">Delete</button></a>
+                    $rowBtns = '<input type="submit" class="btn btnDel" name="delBtn" value="Delete">
                                 <input type="submit" class="btn btnUpd" name="updBtn" value="Update">';
                 }
                 echo '<form method="POST" action="./index.php#accountTBl">
@@ -54,11 +54,10 @@ class Read extends DatabaseConn {
     }
 
     public function getEmpID() {
+        $empID = 0;
         if (isset($_POST['updBtn'])) {
             $empID = $_POST['empID'];
-        } else if (isset($_POST['cancelUpd'])) {
-            $empID = 0;
-        } else {
+        } else if (isset($_POST['cancelBtn'])) {
             $empID = 0;
         }
         return $empID;

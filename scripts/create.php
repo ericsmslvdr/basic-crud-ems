@@ -21,7 +21,4 @@ if (isset($_POST['add'])) {
     $addr = $_POST['addr'];
 
     $acc->create($fName, $lName, $pNum, $addr);
-
-    header('location: ./index.php');
-    exit();
 }
