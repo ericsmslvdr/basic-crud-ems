@@ -8,7 +8,6 @@ class Employee
 
     public function __construct(Database $database)
     {
-        $database = $database;
         $this->conn = $database->getConnection();
     }
 
