@@ -1,7 +1,9 @@
 <?php
 require_once 'controllers/EmployeeController.php';
 
-$employeeController = new EmployeeController;
+$database = new Database();
+$employeeModel = new Employee($database);
+$employeeController = new EmployeeController($employeeModel);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['addBtn'])) {

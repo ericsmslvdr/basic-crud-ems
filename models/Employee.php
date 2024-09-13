@@ -2,15 +2,18 @@
 
 require_once 'config/Database.php';
 
-class Employee {
-    private $conn;
+class Employee
+{
+    private PDO $conn;
 
-    public function __construct() {
-        $database = new Database();
+    public function __construct(Database $database)
+    {
+        $database = $database;
         $this->conn = $database->getConnection();
     }
 
-    public function getAllEmployees() {
+    public function getAllEmployees()
+    {
         $stmt = $this->conn->prepare("SELECT * FROM employees");
         $stmt->execute();
         $employees = [];
@@ -23,38 +26,41 @@ class Employee {
         return $employees;
     }
 
-    public function createEmployee($employeeData) {
+    public function createEmployee($employeeData)
+    {
         $stmt = $this->conn->prepare("
             INSERT INTO employees (first_name, last_name, phone_number, address) 
-            VALUES (?, ?, ?, ?)
+            VALUES (:firstName, :lastName, :phoneNumber, :address)
         ");
         $stmt->execute([
-            $employeeData['firstName'],
-            $employeeData['lastName'],
-            $employeeData['phoneNumber'],
-            $employeeData['address']
+            'firstName' => $employeeData['firstName'],
+            'lastName' => $employeeData['lastName'],
+            'phoneNumber' => $employeeData['phoneNumber'],
+            'address' => $employeeData['address']
         ]);
         $stmt->closeCursor();
     }
 
-    public function removeEmployee($employeeId) {
+    public function removeEmployee($employeeId)
+    {
         $stmt = $this->conn->prepare("DELETE FROM employees WHERE id = ?");
         $stmt->execute([$employeeId]);
         $stmt->closeCursor();
     }
 
-    public function updateEmployee($employeeData) {
+    public function updateEmployee($employeeData)
+    {
         $stmt = $this->conn->prepare("
             UPDATE employees 
-            SET first_name = ?, last_name = ?, phone_number = ?, address = ?
-            WHERE employees.id = ?
+            SET first_name = :firstName, last_name = :lastName, phone_number = :phoneNumber, address = :address
+            WHERE employees.id = :employeeId
         ");
         $stmt->execute([
-            $employeeData['firstName'],
-            $employeeData['lastName'],
-            $employeeData['phoneNumber'],
-            $employeeData['address'],
-            $employeeData['employeeId']
+            'firstName' => $employeeData['firstName'],
+            'lastName' => $employeeData['lastName'],
+            'phoneNumber' => $employeeData['phoneNumber'],
+            'address' => $employeeData['address'],
+            'employeeId' => $employeeData['employeeId']
         ]);
         $stmt->closeCursor();
     }
